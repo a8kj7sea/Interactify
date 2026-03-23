@@ -1,0 +1,9 @@
+{
+  "id": "interactify",
+  "name": "Interactify",
+  "version": "1.0.2",
+  "main": "me.a8kj.interactify.velocity.InteractifyVelocityPlugin",
+  "authors": [
+    "a8kj7sea"
+  ]
+}
