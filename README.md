@@ -13,6 +13,28 @@ Interactify operates on a **Provider-Based Architecture**, decoupling the core l
 * **PlatformProvider:** An abstraction layer that handles message rendering and task scheduling.
 * **InputValidator:** A functional interface for real-time data integrity checks.
 
+
+---
+
+
+
+
+
+### 🔌 Required Platform Plugins
+
+To utilize the framework, you **must** install the corresponding platform-specific implementation on your server or proxy. These plugins act as the **Platform Provider**, bridging the API with the native server environment.
+
+| Platform | Required Plugin | Purpose |
+| :--- | :--- | :--- |
+| **Bukkit / Spigot** | `Interactify-Bukkit.jar` | Handles events and task scheduling on game servers. |
+| **Bungeecord** | `Interactify-Bungeecord.jar` | Manages chat input across the Bungeecord proxy. |
+| **Velocity** | `Interactify-Velocity.jar` | Provides modern Adventure API support for Velocity proxies. |
+
+
+<br> <br>
+> [!IMPORTANT]
+> The `Interactify-API` is a library and does not function standalone. Ensure the appropriate implementation jar is present in your `/plugins/` folder to enable the system.
+
 ---
 
 ## 🚀 Implementation Guide
@@ -80,3 +102,4 @@ InteractifyAPI.<Player>getInstance().registerContext(context);
 * **Requirements:** Java 21+ Runtime.
 * **Modularity:** Designed with **Clean Architecture** principles; zero-allocation routing and minimal memory footprint.
 * **Concurrency:** Thread-safe context registration and automated task cleanup.
+
