@@ -1,4 +1,4 @@
-# Interactify Framework
+# Interactify Framework <sup><sub> [![](https://jitpack.io/v/a8kj7sea/Interactify.svg)](https://jitpack.io/#a8kj7sea/Interactify)</sup></sub> 
 
 A robust, high-performance **asynchronous input middleware** for Minecraft environments. Interactify abstracts the complexities of platform-specific chat handling, providing a unified, fluent API for **Bukkit**, **Bungeecord**, and **Velocity**.
 
