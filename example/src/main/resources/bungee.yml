@@ -1,0 +1,7 @@
+name: BungeeInteractifyTest
+version: 1.0.0
+main: me.a8kj.interactify.test.BungeeInteractifyExample
+author: a8kj
+description: Testing Interactify API on BungeeCord
+depends:
+  - Interactify

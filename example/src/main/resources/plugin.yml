@@ -1,0 +1,6 @@
+name: Trststs
+version: 1.0.0
+main: me.a8kj.interactify.test.InteractifyExample
+depend: [Interactify]
+commands:
+  transfer:

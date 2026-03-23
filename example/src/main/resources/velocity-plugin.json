@@ -1,0 +1,16 @@
+{
+  "id": "velocity-test",
+  "name": "VelocityTest",
+  "version": "1.0.0",
+  "description": "Velocity Interactify Example Plugin",
+  "authors": [
+    "a8kj"
+  ],
+  "dependencies": [
+    {
+      "id": "interactify",
+      "optional": false
+    }
+  ],
+  "main": "me.a8kj.interactify.test.VelocityInteractifyExample"
+}
