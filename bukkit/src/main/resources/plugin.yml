@@ -1,0 +1,6 @@
+name: Interactify
+version: ${project.version}
+main: me.a8kj.interactify.bukkit.InteractifyPlugin
+api-version: 1.13
+author: a8kj7sea
+description: A multi-platform interactive chat input API.
