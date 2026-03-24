@@ -22,6 +22,7 @@
         <dependency>
             <groupId>com.github.azbh111</groupId>
             <artifactId>spigot-1.8.8</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.a8kj.interactify.api</groupId>
