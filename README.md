@@ -99,8 +99,91 @@ InteractifyAPI.<Player>getInstance().registerContext(context);
 
 -----
 
+## 🛠 Using as a Standalone Dependency (Shading)
+
+If you prefer not to use the centralized plugin, you can include Interactify directly in your project by shading it. You will need to add both the API and your specific platform module as `compile` scope dependencies, and manually register the provider and listener.
+
+### 1. Maven Dependencies
+
+Add the core API and your target platform (e.g., Bungeecord) to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.github.a8kj7sea.Interactify</groupId>
+    <artifactId>api</artifactId>
+    <version>1.0.2</version>
+    <scope>compile</scope>
+</dependency>
+
+<dependency>
+    <groupId>com.github.a8kj7sea.Interactify</groupId>
+    <artifactId>bungeecord</artifactId>
+    <version>1.0.2</version>
+    <scope>compile</scope>
+</dependency>
+```
+
+### 2. Maven Shade Plugin
+
+Ensure the library is shaded into your final jar by adding the `maven-shade-plugin` to your build configuration:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>3.5.0</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>shade</goal>
+            </goals>
+            <configuration>
+                <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+### 3. Initialization & Registration
+
+Since you are not using the centralized plugin, you **must** manually initialize the `InteractifyAPI` and register the corresponding listener in your plugin's main class.
+
+**Bungeecord Example:**
+
+```java
+@Override
+public void onEnable() {
+    getLogger().info("Starting Interactify (Standalone BungeeCord Implementation)...");
+
+    try {
+        // 1. Initialize the Provider
+        PlatformProvider<ProxiedPlayer> provider = new BungeeProvider(this);
+        InteractifyAPI.initialize(provider);
+
+        // 2. Register the Listener
+        BungeeInputListener listener = new BungeeInputListener(InteractifyAPI.getInstance(), provider);
+        getProxy().getPluginManager().registerListener(this, listener);
+
+        getLogger().info("Interactify API initialized and listener registered successfully!");
+    } catch (Exception e) {
+        getLogger().log(Level.SEVERE, "Failed to initialize Interactify API!", e);
+    }
+}
+```
+
+**Other Platforms:**
+
+For initialization examples on other platforms, refer to the main classes of their respective plugin implementations:
+* [Velocity Initialization Example](https://github.com/a8kj7sea/Interactify/blob/main/velocity/src/main/java/me/a8kj/interactify/velocity/InteractifyVelocityPlugin.java)
+* [Bukkit / Spigot Initialization Example](https://github.com/a8kj7sea/Interactify/blob/main/bukkit/src/main/java/me/a8kj/interactify/bukkit/InteractifyPlugin.java)
+
 ## 📦 Technical Specifications
 
   * **Requirements:** Java 21+ Runtime.
   * **Modularity:** Designed with **Clean Architecture** principles; optimized for minimal memory footprint and zero-allocation routing capabilities.
   * **Concurrency:** Thread-safe context registration and automated task cleanup.
+
+
+  
